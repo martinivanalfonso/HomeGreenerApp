@@ -1,19 +1,51 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
 
-export default function App() {
+import { AppLoading } from "expo";
+import { Asset } from "expo-asset";
+
+import Navigation from "./navigation";
+import { Block } from "./components";
+
+const images = [
+  require("./assets/images/plants_1.png"),
+  require("./assets/images/plants_2.png"),
+  require("./assets/images/plants_3.png"),
+  require("./assets/images/explore_1.png"), 
+  require("./assets/images/explore_2.png"),
+  require("./assets/images/explore_3.png"),
+  require("./assets/images/explore_4.png"),
+  require("./assets/images/explore_5.png"),
+  require("./assets/images/explore_6.png"),
+  require("./assets/images/avatar.png"),
+];
+
+const App = () => {
+  const [isLoadingComplete, setIsLoadingComplete] = useState(false);
+  const [skipLoadingScreen, setSkipLoadingScreen] = useState(false);
+
+  // caches all the images for a better performance
+  const handleResourcesAsync = async () => {
+    const cacheImages = images.map((image) => {
+      return Asset.fromModule(image).downloadAsync();
+    });
+
+    return Promise.all(cacheImages);
+  };
+
+  if (!isLoadingComplete && !skipLoadingScreen) {
+    return (
+      <AppLoading
+        startAsync={handleResourcesAsync}
+        onError={(error) => console.warn(error)}
+        onFinish={() => setIsLoadingComplete(true)}
+      />
+    );
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <Block white>
+      <Navigation />
+    </Block>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;

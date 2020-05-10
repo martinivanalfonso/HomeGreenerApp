@@ -1,5 +1,7 @@
 import React from "react";
-import { createAppContainer, createStackNavigator } from "react-navigation";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+
 import { Image } from "react-native";
 
 import Welcome from "../screens/Welcome";
@@ -13,12 +15,7 @@ import { theme } from "../constants";
 
 const screens = createStackNavigator(
   {
-    Welcome,
-    Login,
-    Explore,
-    Product,
-    Settings,
-    Browse,
+    Welcome
   },
   {
     defaultNavigationOptions: {
