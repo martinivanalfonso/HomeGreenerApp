@@ -20,7 +20,7 @@ const screens = createStackNavigator(
   {
     defaultNavigationOptions: {
       headerStyle: {},
-      headerBackImage: <Image />,
+      headerBackImage: () => <Image />,
       headerBackTitle: null,
       headerLeftContainerStyle: {},
       headerRightContainerStyle: {},
