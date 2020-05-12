@@ -8,6 +8,8 @@ import Welcome from "../screens/Welcome";
 import Browse from "../screens/Browse";
 import Explore from "../screens/Explore";
 import Login from "../screens/Login";
+import Forgot from "../screens/Forgot";
+import Signup from "../screens/Signup";
 import Product from "../screens/Product";
 import Settings from "../screens/Settings";
 
@@ -18,6 +20,8 @@ const screens = createStackNavigator(
     Welcome,
     Login,
     Browse,
+    Forgot,
+    Signup,
   },
   {
     defaultNavigationOptions: {

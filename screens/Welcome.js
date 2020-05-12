@@ -233,7 +233,7 @@ const Welcome = ({ illustrations = DEFAULT_ILLUSTRATIONS, navigation }) => {
             Sign Up
           </Text>
         </Button>
-        <Button onPress={() => setShowTerms(true)}>
+        <Button style={{ backgroundColor: 'transparent'}} onPress={() => setShowTerms(true)}>
           <Text center caption gray>
             Terms of service
           </Text>

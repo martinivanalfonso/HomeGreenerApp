@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 
-import { StyleSheet, KeyboardAvoidingView } from "react-native";
+import {
+  StyleSheet,
+  KeyboardAvoidingView,
+  ActivityIndicator,
+  Keyboard,
+} from "react-native";
 import { Button, Block, Text, Input } from "../components";
 import { theme } from "../constants";
 
 const Login = ({ navigation }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("guest@guest.com");
+  const [password, setPassword] = useState("examplepassword");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleLogin = () => {
+    Keyboard.dismiss();
     setLoading(true);
     // Validation and Authentication process here
     if (!email || !password) {
@@ -18,8 +24,10 @@ const Login = ({ navigation }) => {
     } else {
       setError("");
     }
-    setLoading(false);
-    if (!error) navigation.navigate("Browse");
+    setTimeout(() => {
+      setLoading(false);
+      if (!error) navigation.navigate("Browse");
+    }, 1500);
   };
   return (
     <KeyboardAvoidingView style={styles.login} behavior="padding">
@@ -31,12 +39,13 @@ const Login = ({ navigation }) => {
           <Input
             label="Email"
             style={styles.input}
-            placeholder="example@example.com"
+            defaultValue={email}
             onChangeText={(text) => setEmail(text)}
           />
           <Input
             secure
             label="Password"
+            defaultValue={password}
             style={styles.input}
             onChangeText={(text) => setPassword(text)}
           />
@@ -44,9 +53,13 @@ const Login = ({ navigation }) => {
             {error && error}
           </Text>
           <Button gradient onPress={handleLogin}>
-            <Text bold white center>
-              Login
-            </Text>
+            {loading ? (
+              <ActivityIndicator size="small" color="white" />
+            ) : (
+              <Text bold white center>
+                Login
+              </Text>
+            )}
           </Button>
           <Button
             style={{ backgroundColor: "transparent" }}
