@@ -15,15 +15,26 @@ import { theme } from "../constants";
 
 const screens = createStackNavigator(
   {
-    Welcome
+    Welcome,
+    Login,
+    Browse,
   },
   {
     defaultNavigationOptions: {
-      headerStyle: {},
-      headerBackImage: () => <Image />,
-      headerBackTitle: null,
-      headerLeftContainerStyle: {},
+      headerStyle: {
+        height: theme.sizes.base * 4,
+        backgroundColor: theme.colors.white,
+        elevation: 0, // for android
+      },
+      headerBackImage: () => <Image source={require('../assets/icons/back.png')} />,
+      headerLeftContainerStyle: {
+        alignItems: 'center',
+        marginLeft: theme.sizes.base * 2,
+        paddingRight: theme.sizes.base,
+      },
       headerRightContainerStyle: {},
+      headerBackTitleVisible: false,
+      headerTitle: () => null,
     },
   }
 );
