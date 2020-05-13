@@ -12,6 +12,7 @@ import { theme } from "../constants";
 const Signup = ({ navigation }) => {
   const [email, setEmail] = useState("guest@guest.com");
   const [password, setPassword] = useState("examplepassword");
+  const [repeatPassword, setRepeatPassword] = useState("examplepassword");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -48,6 +49,13 @@ const Signup = ({ navigation }) => {
             defaultValue={password}
             style={styles.input}
             onChangeText={(text) => setPassword(text)}
+          />
+          <Input
+            secure
+            label="Repeat Password"
+            defaultValue={RepeatPassword}
+            style={styles.input}
+            onChangeText={(text) => setRepeatPassword(text)}
           />
           <Text color="red" center>
             {error && error}
