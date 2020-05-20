@@ -5,8 +5,7 @@ import { theme } from "../constants";
 
 const GRAY_COLOR = "rgba(168, 182, 200, 0.30)";
 
-const SwitchInput = () => {
-  const { value, ...props } = this.props;
+const SwitchInput = ({ value, ...props}) => {
   let thumbColor = null;
 
   if (Platform.OS === "android") {

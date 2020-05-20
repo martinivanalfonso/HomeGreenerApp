@@ -3,6 +3,7 @@ import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 
 import { Image } from "react-native";
+import { Button } from "../components";
 
 import Welcome from "../screens/Welcome";
 import Browse from "../screens/Browse";
@@ -24,7 +25,7 @@ const screens = createStackNavigator(
     Signup,
     Settings,
     Explore,
-    Product
+    Product,
   },
   {
     defaultNavigationOptions: {
@@ -34,12 +35,20 @@ const screens = createStackNavigator(
         elevation: 0, // for android
       },
       headerBackImage: () => {
-        const headerImage = <Image source={require('../assets/icons/back.png')}/>
-        headerImage.displayName="Back"
-        return headerImage
+        const headerImage = (
+          <Button
+            style={{
+              backgroundColor: "transparent",
+              paddingHorizontal: theme.sizes.base,
+            }}
+          >
+            <Image source={require("../assets/icons/back.png")} />
+          </Button>
+        );
+        return headerImage;
       },
       headerLeftContainerStyle: {
-        alignItems: 'center',
+        alignItems: "center",
         marginLeft: theme.sizes.base * 2,
         paddingRight: theme.sizes.base,
       },

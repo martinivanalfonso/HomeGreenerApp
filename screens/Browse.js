@@ -1,22 +1,22 @@
 import React, { useState } from "react";
 
 import { Image, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
-import { Button, Block, Text, Card, Badge} from "../components";
+import { Button, Block, Text, Card, Badge } from "../components";
 import { theme, mocks } from "../constants";
 
 const Browse = ({
   profile = mocks.profile,
   categories = mocks.categories,
   navigation,
-  TABS = ["Products", "Inspiration", "Shop"]
 }) => {
-  const [activeTab, setActiveTab] = useState();
+  const TABS = ["Products", "Inspiration", "Shop"];
+  const [activeTab, setActiveTab] = useState(0);
 
   const renderTab = (tab, index) => {
     const isActive = activeTab === index;
     return (
       <TouchableOpacity
-        onPress={setActiveTab(index)}
+        onPress={() => setActiveTab(index)}
         key={`tab-${index}`}
         style={[styles.tab, isActive ? styles.active : null]}
       >
@@ -28,36 +28,46 @@ const Browse = ({
   };
 
   return (
-    <Block center>
+    <Block>
       <Block flex={false} row center space="between" style={styles.header}>
         <Text h1 light>
           Browse
         </Text>
-        <Button onPress={() => navigation.navigate('Settings')}>
+        <Button onPress={() => navigation.navigate("Settings")} color='transparent'>
           <Image source={profile.avatar} style={styles.avatar} />
         </Button>
       </Block>
       <Block flex={false} row style={styles.tabs}>
         {TABS.map((tab, index) => renderTab(tab, index))}
-      </Block>  
+      </Block>
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{ paddingVertical: theme.sizes.base * 2 }}
       >
-        {categories.map((category) => (
-          <TouchableOpacity
-            key={category.name}
-            onPress={() => navigation.navigate("Explore", { category })}
-          >
-            <Card center middle shadow style={styles.category}>
-              <Badge margin={[0, 0, 15]} size={50} color="rgba(41,216,143,0.2)">
-                <Image source={category.image} />
-              </Badge>
-              <Text medium height={20}>{category.name}</Text>
-              <Text gray caption>{category.count} products</Text>
-            </Card>
-          </TouchableOpacity>
-        ))}
+        <Block flex={false} row space="between" style={styles.categories}>
+          {categories.map((category) => (
+            <TouchableOpacity
+              key={category.name}
+              onPress={() => navigation.navigate("Explore", { category })}
+            >
+              <Card center middle shadow style={styles.category}>
+                <Badge
+                  margin={[0, 0, 15]}
+                  size={50}
+                  color="rgba(41,216,143,0.2)"
+                >
+                  <Image source={category.image} />
+                </Badge>
+                <Text medium height={20}>
+                  {category.name}
+                </Text>
+                <Text gray caption>
+                  {category.count} products
+                </Text>
+              </Card>
+            </TouchableOpacity>
+          ))}
+        </Block>
       </ScrollView>
     </Block>
   );
@@ -84,6 +94,11 @@ const styles = StyleSheet.create({
   active: {
     borderBottomColor: theme.colors.secondary,
     borderBottomWidth: 3,
+  },
+  categories: {
+    flexWrap: 'wrap',
+    paddingHorizontal: theme.sizes.base * 2,
+    marginBottom: theme.sizes.base * 3.5,
   },
   category: {
     width: 150,

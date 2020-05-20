@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Image, StyleSheet, ScrollView, TextInput } from "react-native";
-import { Slider } from "react-native-slider";
+import Slider from "react-native-slider";
 import { Button, Block, Text, Divider, SwitchInput } from "../components";
 import { theme, mocks } from "../constants";
 
@@ -22,7 +22,8 @@ const Settings = ({ profile: user = mocks.profile }) => {
       return (
         <TextInput
           defaultValue={profile[name]}
-          onChangeText={(text) => setProfile(([name] = text))}
+          autoFocus={true}
+          onChangeText={(text) => handleEdit([name], text)}
         />
       );
     }
@@ -30,19 +31,23 @@ const Settings = ({ profile: user = mocks.profile }) => {
     return <Text bold>{profile[name]}</Text>;
   };
 
+  const handleEdit = (name, text) => {
+    setProfile(prev => ({ ...prev, [name]: text}))
+  }
+
   return (
-    <Block center>
-      <Block flex={false} row center space="between" style={styles.header}>
+    <Block style={styles.header} >
+      <Block flex={false} row center space="between" >
         <Text h1 light>
           Settings
         </Text>
-        <Button>
+        <Button color='transparent'>
           <Image source={profile.avatar} style={styles.avatar} />
         </Button>
       </Block>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Block styles={styles.inputs}>
-          <Block row space="between" margin={[10, 0]} styles={styles.inputRow}>
+          <Block row space="between" margin={[10, 0]} style={styles.inputRow}>
             <Block>
               <Text gray2>Username</Text>
               {renderEdit("username")}
@@ -51,7 +56,7 @@ const Settings = ({ profile: user = mocks.profile }) => {
               {editing === "username" ? "Save" : "Edit"}
             </Text>
           </Block>
-          <Block row space="between" margin={[10, 0]} styles={styles.inputRow}>
+          <Block row space="between" margin={[10, 0]} style={styles.inputRow}>
             <Block>
               <Text gray2>Location</Text>
               {renderEdit("location")}
@@ -60,7 +65,7 @@ const Settings = ({ profile: user = mocks.profile }) => {
               {editing === "location" ? "Save" : "Edit"}
             </Text>
           </Block>
-          <Block row space="between" margin={[10, 0]} styles={styles.inputRow}>
+          <Block row space="between" margin={[10, 0]} style={styles.inputRow}>
             <Block>
               <Text gray2>E-mail</Text>
               {renderEdit("email")}
@@ -71,7 +76,7 @@ const Settings = ({ profile: user = mocks.profile }) => {
           </Block>
         </Block>
 
-        <Divider margin={[theme.sizes.base, theme.sizes.base * 2]} />
+        <Divider margin={[theme.sizes.base * 2, 0]} />
 
         <Block style={styles.slider}>
           <Block>
@@ -85,8 +90,9 @@ const Settings = ({ profile: user = mocks.profile }) => {
               thumbStyle={styles.thumb}
               trackStyle={{ height: 6, borderRadius: 6 }}
               minimumTrackTintColor={theme.colors.secondary}
-              maximumTrackTintColor={theme.colors.secondary}
+              maximumTrackTintColor={theme.colors.gray2}
               value={budget}
+              step={1}
               onValueChange={(val) => setBudget(val)}
             />
             <Text caption gray2 right>
@@ -104,8 +110,9 @@ const Settings = ({ profile: user = mocks.profile }) => {
               thumbStyle={styles.thumb}
               trackStyle={{ height: 6, borderRadius: 6 }}
               minimumTrackTintColor={theme.colors.secondary}
-              maximumTrackTintColor={theme.colors.secondary}
+              maximumTrackTintColor="rgba(157, 163, 180, 0.10)"
               value={monthlyCap}
+              step={1}
               onValueChange={(val) => setMonthlyCap(val)}
             />
             <Text caption gray2 right>
@@ -114,17 +121,17 @@ const Settings = ({ profile: user = mocks.profile }) => {
           </Block>
         </Block>
 
-        <Divider />
+        <Divider margin={[theme.sizes.base * 2, 0]} />
 
-        <Block style={styles.toggles}>
-          <Block row space="between" center>
+        <Block>
+          <Block row space="between" center style={styles.toggle}>
             <Text gray2>Notifications</Text>
             <SwitchInput
               value={notifications}
               onValueChange={() => setNotifications(!notifications)}
             />
           </Block>
-          <Block row space="between" center>
+          <Block row space="between" center style={styles.toggle}>
             <Text gray2>Newsletter</Text>
             <SwitchInput
               value={newsletter}
@@ -140,6 +147,7 @@ const Settings = ({ profile: user = mocks.profile }) => {
 const styles = StyleSheet.create({
   header: {
     paddingHorizontal: theme.sizes.base * 2,
+    paddingBottom: theme.sizes.base * 2,
   },
   avatar: {
     height: theme.sizes.base * 2.2,
@@ -154,7 +162,6 @@ const styles = StyleSheet.create({
   },
   slider: {
     marginTop: theme.sizes.base,
-    paddingHorizontal: theme.sizes.base * 2,
   },
   thumb: {
     width: theme.sizes.base,
@@ -164,8 +171,8 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     backgroundColor: theme.colors.secondary,
   },
-  toggles: {
-    paddingHorizontal: theme.sizes.base * 2,
-  },
+  toggle: {
+    marginBottom: theme.sizes.base,
+  }
 });
 export default Settings;

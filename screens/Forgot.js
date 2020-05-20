@@ -69,6 +69,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
   },
+  input: {
+    borderRadius: 0,
+    borderWidth: 0,
+    padding: 8,
+    borderBottomColor: "gray",
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  }
 });
 
 export default Forgot;
