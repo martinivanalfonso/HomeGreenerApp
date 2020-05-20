@@ -8,8 +8,8 @@ const Browse = ({
   profile = mocks.profile,
   categories = mocks.categories,
   navigation,
+  TABS = ["Products", "Inspiration", "Shop"]
 }) => {
-  const TABS = ["Products", "Inspiration", "Shop"];
   const [activeTab, setActiveTab] = useState();
 
   const renderTab = (tab, index) => {
@@ -29,15 +29,15 @@ const Browse = ({
 
   return (
     <Block center>
-      <Block flex={false} row center space="between" style={style.header}>
+      <Block flex={false} row center space="between" style={styles.header}>
         <Text h1 light>
           Browse
         </Text>
         <Button onPress={() => navigation.navigate('Settings')}>
-          <Image source={profile.avatar} style={style.avatar} />
+          <Image source={profile.avatar} style={styles.avatar} />
         </Button>
       </Block>
-      <Block flex={false} row style={style.tabs}>
+      <Block flex={false} row style={styles.tabs}>
         {TABS.map(tab, (index) => renderTab(tab, index))}
       </Block>  
       <ScrollView
@@ -49,7 +49,7 @@ const Browse = ({
             key={category.name}
             onPress={() => navigation.navigate("Explore", { category })}
           >
-            <Card center middle shadow style={style.category}>
+            <Card center middle shadow style={styles.category}>
               <Badge margin={[0, 0, 15]} size={50} color="rgba(41,216,143,0.2)">
                 <Image source={category.image} />
               </Badge>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     height: theme.sizes.base * 2.2,
     width: theme.sizes.base * 2.2,
   },
-  tab: {
+  tabs: {
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: theme.colors.gray2,
     marginVertical: theme.sizes.base,

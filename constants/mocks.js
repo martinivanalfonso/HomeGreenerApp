@@ -81,7 +81,7 @@ const categories = [
     email: "contact@react-ui-kit.com",
     avatar: require("../assets/images/avatar.png"),
     budget: 1000,
-    monthly_cap: 5000,
+    monthlyCap: 5000,
     notifications: true,
     newsletter: false
   };

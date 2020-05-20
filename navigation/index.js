@@ -22,6 +22,7 @@ const screens = createStackNavigator(
     Browse,
     Forgot,
     Signup,
+    Settings,
   },
   {
     defaultNavigationOptions: {

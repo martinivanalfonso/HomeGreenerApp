@@ -6,7 +6,7 @@ import {
   ActivityIndicator,
   Keyboard,
 } from "react-native";
-import { Button, Block, Text } from "../components";
+import { Button, Block, Text, Input } from "../components";
 import { theme } from "../constants";
 
 const Forgot = () => {
@@ -31,7 +31,7 @@ const Forgot = () => {
   };
 
   return (
-    <KeyboardAvoidingView style={style.forgot} behavior="padding">
+    <KeyboardAvoidingView style={styles.forgot} behavior="padding">
       <Block padding={[0, theme.sizes.base * 2]}>
         <Text h1 bold>
           Forgot
