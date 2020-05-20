@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Image, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
-import { Button, Block, Text } from "../components";
+import { Button, Block, Text, Card, Badge} from "../components";
 import { theme, mocks } from "../constants";
 
 const Browse = ({
@@ -38,7 +38,7 @@ const Browse = ({
         </Button>
       </Block>
       <Block flex={false} row style={styles.tabs}>
-        {TABS.map(tab, (index) => renderTab(tab, index))}
+        {TABS.map((tab, index) => renderTab(tab, index))}
       </Block>  
       <ScrollView
         showsVerticalScrollIndicator={false}

@@ -23,6 +23,8 @@ const screens = createStackNavigator(
     Forgot,
     Signup,
     Settings,
+    Explore,
+    Product
   },
   {
     defaultNavigationOptions: {
@@ -31,7 +33,11 @@ const screens = createStackNavigator(
         backgroundColor: theme.colors.white,
         elevation: 0, // for android
       },
-      headerBackImage: () => <Image source={require('../assets/icons/back.png')} />,
+      headerBackImage: () => {
+        const headerImage = <Image source={require('../assets/icons/back.png')}/>
+        headerImage.displayName="Back"
+        return headerImage
+      },
       headerLeftContainerStyle: {
         alignItems: 'center',
         marginLeft: theme.sizes.base * 2,

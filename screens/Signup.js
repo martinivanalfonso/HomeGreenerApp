@@ -53,7 +53,7 @@ const Signup = ({ navigation }) => {
           <Input
             secure
             label="Repeat Password"
-            defaultValue={RepeatPassword}
+            defaultValue={repeatPassword}
             style={styles.input}
             onChangeText={(text) => setRepeatPassword(text)}
           />

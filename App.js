@@ -21,7 +21,6 @@ const images = [
 
 const App = () => {
   const [isLoadingComplete, setIsLoadingComplete] = useState(false);
-  const [skipLoadingScreen, setSkipLoadingScreen] = useState(false);
 
   // caches all the images for a better performance
   const handleResourcesAsync = async () => {
@@ -32,7 +31,7 @@ const App = () => {
     return Promise.all(cacheImages);
   };
 
-  if (!isLoadingComplete && !skipLoadingScreen) {
+  if (!isLoadingComplete) {
     return (
       <AppLoading
         startAsync={handleResourcesAsync}

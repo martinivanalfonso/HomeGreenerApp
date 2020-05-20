@@ -32,12 +32,12 @@ const Settings = ({ profile: user = mocks.profile }) => {
 
   return (
     <Block center>
-      <Block flex={false} row center space="between" style={style.header}>
+      <Block flex={false} row center space="between" style={styles.header}>
         <Text h1 light>
           Settings
         </Text>
         <Button>
-          <Image source={profile.avatar} style={style.avatar} />
+          <Image source={profile.avatar} style={styles.avatar} />
         </Button>
       </Block>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -73,7 +73,7 @@ const Settings = ({ profile: user = mocks.profile }) => {
 
         <Divider margin={[theme.sizes.base, theme.sizes.base * 2]} />
 
-        <Block style={style.slider}>
+        <Block style={styles.slider}>
           <Block>
             <Text gray2 style={{ marginBottom: 10 }}>
               Budget
@@ -116,7 +116,7 @@ const Settings = ({ profile: user = mocks.profile }) => {
 
         <Divider />
 
-        <Block style={style.toggles}>
+        <Block style={styles.toggles}>
           <Block row space="between" center>
             <Text gray2>Notifications</Text>
             <SwitchInput

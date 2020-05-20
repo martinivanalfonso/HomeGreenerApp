@@ -38,7 +38,7 @@ const Welcome = ({ illustrations = DEFAULT_ILLUSTRATIONS, navigation }) => {
               style={{ marginBottom: theme.sizes.base }}
             >
               1. Your use of the Service is at your sole risk. The service is
-              provided on an "as is" and "as available" basis.
+              provided on an &quotas is&quot and &quotas available&quot basis.
             </Text>
             <Text
               caption
@@ -102,7 +102,7 @@ const Welcome = ({ illustrations = DEFAULT_ILLUSTRATIONS, navigation }) => {
               containing Content that we determine in our sole discretion are
               unlawful, offensive, threatening, libelous, defamatory,
               pornographic, obscene or otherwise objectionable or violates any
-              party's intellectual property or these Terms of Service.
+              party&quots intellectual property or these Terms of Service.
             </Text>
             <Text
               caption
@@ -133,7 +133,7 @@ const Welcome = ({ illustrations = DEFAULT_ILLUSTRATIONS, navigation }) => {
               style={{ marginBottom: theme.sizes.base }}
             >
               10. You must not upload, post, host, or transmit unsolicited
-              e-mail, SMSs, or "spam" messages.
+              e-mail, SMSs, or &quotspam&quot messages.
             </Text>
           </ScrollView>
 

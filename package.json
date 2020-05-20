@@ -1,6 +1,7 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
+    "lint": "eslint *.js **/*.js",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
@@ -25,7 +26,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
-    "babel-preset-expo": "~8.1.0"
+    "babel-eslint": "^10.1.0",
+    "babel-preset-expo": "~8.1.0",
+    "eslint": "^7.0.0",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-native": "^3.8.1"
   },
   "private": true
 }
