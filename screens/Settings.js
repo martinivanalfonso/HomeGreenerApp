@@ -90,7 +90,7 @@ const Settings = ({ profile: user = mocks.profile }) => {
               thumbStyle={styles.thumb}
               trackStyle={{ height: 6, borderRadius: 6 }}
               minimumTrackTintColor={theme.colors.secondary}
-              maximumTrackTintColor={theme.colors.gray2}
+              maximumTrackTintColor="rgba(157, 163, 180, 0.10)"
               value={budget}
               step={1}
               onValueChange={(val) => setBudget(val)}

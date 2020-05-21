@@ -34,7 +34,7 @@ const Signup = ({ navigation }) => {
     <KeyboardAvoidingView style={styles.login} behavior="padding">
       <Block padding={[theme.sizes.base, theme.sizes.base * 2]}>
         <Text h1 bold>
-          Login
+          Sign Up
         </Text>
         <Block middle>
           <Input

@@ -76,12 +76,12 @@ const categories = [
   ];
   
   const profile = {
-    username: "react-ui-kit",
-    location: "Europe",
-    email: "contact@react-ui-kit.com",
+    username: "guestuser",
+    location: "Berlin, Germany",
+    email: "contact@me.com",
     avatar: require("../assets/images/avatar.png"),
-    budget: 1000,
-    monthlyCap: 5000,
+    budget: 750,
+    monthlyCap: 3000,
     notifications: true,
     newsletter: false
   };

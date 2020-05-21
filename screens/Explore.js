@@ -19,7 +19,11 @@ const Explore = ({ images = mocks.explore, navigation }) => {
   const [searchString, setSearchString] = useState("");
 
   const renderFooter = () => (
-    <LinearGradient>
+    <LinearGradient
+      locations={[0.5, 1]}
+      style={styles.footer}
+      colors={["rgba(255,255,255,0)", "rgba(255,255,255,0.6)"]}
+      >
       <Button gradient style={{ width: width / 2.678 }}>
         <Text bold white center>
           Filter
@@ -67,13 +71,15 @@ const Explore = ({ images = mocks.explore, navigation }) => {
 
   return (
     <Block style={styles.header}>
-      <Block flex={false} row center space="between" style={styles.header}>
-        <Text h1 bold>
+      <ScrollView showsVerticalScrollIndicator={false}>
+      <Block flex={false} row center space="between">
+        <Text h1 bold style={{ paddingVertical: theme.sizes.base * 2 }}>
           Explore
         </Text>
         <Block middle flex={0.6} style={styles.search}>
           <Input
             placeholder="Search"
+            style={styles.searchInput}
             placeholderTextColor={theme.colors.gray}
             value={searchString}
             onChangeText={(text) => setSearchString(text)}
@@ -88,11 +94,10 @@ const Explore = ({ images = mocks.explore, navigation }) => {
             }
           />
         </Block>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          {renderExplore()}
-        </ScrollView>
-        {renderFooter()}
       </Block>
+        {renderExplore()}
+      </ScrollView>
+      {renderFooter()}
     </Block>
   );
 };
@@ -117,12 +122,12 @@ const styles = StyleSheet.create({
   searchRight: {
     top: 0,
     marginVertical: 0,
-    backgroundColor: "transparent",
+    backgroundColor: "transparent"
   },
   searchIcon: {
     position: "absolute",
     right: theme.sizes.base / 1.333,
-    top: theme.sizes.base / 1.6,
+    top: theme.sizes.base / 1.6
   },
   image: {
     minHeight: 100,
