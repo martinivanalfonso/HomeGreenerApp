@@ -7,11 +7,11 @@ import {
 } from "react-native";
 
 import { Divider, Block, Text } from "../components";
-import { theme } from "../constants";
+import { theme, mocks } from "../constants";
 
 const { width } = Dimensions.get("window");
 
-const Product = ({ product }) => {
+const Product = ({ product = mocks.products[0] }) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <Block style={styles.product}>
